@@ -23,28 +23,27 @@ class Result {
 
     public static void miniMaxSum(List<Integer> arr) {
         // Initialize variables
-        long totalSum = 0L;  // totalSum to hold the sum of all elements
-        int minElement = Integer.MAX_VALUE;  // minElement to track the minimum value
-        int maxElement = Integer.MIN_VALUE;  // maxElement to track the maximum value
+        long Fsum = 0L; // Represents the sum of all integers in the array
+        int minInt = Integer.MAX_VALUE; // Initialize to the maximum possible integer value
+        int maxInt = Integer.MIN_VALUE; // Initialize to the minimum possible integer value
         
-        // Calculate total sum, min, and max elements
-        for (int num : arr) {
-            totalSum += num;  // Add current element to totalSum
-            if (num < minElement) {  // Update minElement if current element is smaller
-                minElement = num;
+        // Iterate through the array to calculate sum and find min/max integers
+        for (int i : arr) {
+            Fsum += i; // Add current integer to the total sum
+            if (i < minInt) { // Check if current integer is smaller than the current minimum
+                minInt = i; // Update minimum if necessary
             }
-            if (num > maxElement) {  // Update maxElement if current element is larger
-                maxElement = num;
+            if (i > maxInt) { // Check if current integer is larger than the current maximum
+                maxInt = i; // Update maximum if necessary
             }
         }
         
-        // Calculate minimum sum by subtracting maxElement from totalSum
-        long minSum = totalSum - maxElement;
-        // Calculate maximum sum by subtracting minElement from totalSum
-        long maxSum = totalSum - minElement;
+        // Calculate the sums excluding the min and max integers
+        long sumMin = Fsum - maxInt;
+        long sumMax = Fsum - minInt;
         
         // Print the results
-        System.out.println(minSum + " " + maxSum);
+        System.out.println(sumMin + " " + sumMax);
     }
 }
 
@@ -52,14 +51,14 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        // Read input from user, split into integers, and collect into a List
+        // Read input integers from the user and convert them to a list
         List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
             .map(Integer::parseInt)
             .collect(toList());
 
-        // Call miniMaxSum function with the input array
+        // Call the miniMaxSum function with the input list
         Result.miniMaxSum(arr);
 
-        bufferedReader.close();  // Close the BufferedReader
+        bufferedReader.close();
     }
 }
