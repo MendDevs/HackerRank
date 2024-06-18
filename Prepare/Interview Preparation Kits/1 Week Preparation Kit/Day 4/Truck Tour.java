@@ -14,6 +14,34 @@ class Result {
      */
 
     public static int truckTour(List<List<Integer>> petrolpumps) {
+
+       /* Another method 
+
+
+class Result {
+
+
+    public static int truckTour(List<List<Integer>> petrolpumps) {
+    // Write your code here
+    int n = petrolpumps.size();int totalSurplus=0; int currentSurplus=0;int startingPump=0;
+    for(int i=0; i<n; i++){
+        int petrol = petrolpumps.get(i).get(0);
+        int distance= petrolpumps.get(i).get(1);
+        totalSurplus += petrol - distance;
+        currentSurplus += petrol - distance;
+        
+        if(currentSurplus<0){
+            startingPump = i+1;
+            currentSurplus = 0;
+        }
+    }
+    return totalSurplus >=0? startingPump:-1;
+    }
+
+}
+*/
+
+        
         // Write your code here
         int totalPetrol = 0;
         int totalDistance = 0;
